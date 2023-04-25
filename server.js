@@ -4,7 +4,10 @@ const app = express();
 const cors = require("cors");
 const connection = require("./db");
 const roomRoutes = require("./routes/room");
-const BookingRoutes = require("./routes/book")
+const BookingRoutes = require("./routes/book");
+const bookedData = require("./routes/listAllRooms");
+const customerData = require("./routes/listAllCustomers");
+const customerBookedRoom = require("./routes/customerBookedRoom");
 
 require("dotenv").config();
 
@@ -24,3 +27,6 @@ connection();
 
 app.use("/api/room", roomRoutes);
 app.use("/api/book", BookingRoutes);
+app.use("/api/allrooms", bookedData);
+app.use("/api/customers", customerData);
+app.use("/api/custroom", customerBookedRoom);
